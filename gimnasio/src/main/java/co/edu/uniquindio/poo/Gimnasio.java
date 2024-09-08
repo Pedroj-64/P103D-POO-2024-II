@@ -1,6 +1,7 @@
 package co.edu.uniquindio.poo;
 
 import java.time.LocalDate;
+import java.util.Collection;
 import java.util.LinkedList;
 
 public class Gimnasio {
@@ -104,6 +105,7 @@ public class Gimnasio {
 
     /*
      - calcularPromedioEdad()
+     
      - modaEdades()
      - elimiarNombreVocales()
      - determiarVocal()
@@ -111,6 +113,47 @@ public class Gimnasio {
 
     // --------------------Completar---------------------------------
 
+    //calcular promedio
+    public void calcularPromedioEdad(){
+        Collection<Integer> edades=new LinkedList<>();
+        for(Miembro m : miembros){
+            int edad=m.getEdad();
+            edades.add(edad);
+        }
+        int suma=0;
+        for (int edad: edades){
+            suma+= edad;
+        }
+        int promedio=suma/edades.size();
+
+        System.out.println("El promedio de edades de miembros del gimansio es: " + promedio);
+    }
+
+    //vocal
+    public int determinarVocal(){
+        int contador=0;
+        for(Miembro m: miembros){
+            String nombre=m.getNombre();
+            char[] vocales=nombre.toLowerCase().toCharArray();
+              for (char vocal: vocales){
+                if(vocal=='a' || vocal=='e' || vocal=='i' || vocal=='o' || vocal=='u'){
+                contador+=1;
+            }
+            }
+        }  
+        return contador;
+
+    }
+
+    //eliminar por vocal
+    public void eliminarNombreVocales(){
+        for (int i =0 ; i<miembros.size();i++){
+            if(determinarVocal()>=3){
+                miembros.remove(i);
+            }
+            i--;
+        }
+    }
 
 
     public String getNombre() {
