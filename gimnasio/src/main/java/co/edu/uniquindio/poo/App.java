@@ -42,7 +42,6 @@ public class App {
         }
 
         //eliminar miembros con volales
-        gimnasio.determinarVocal();
         gimnasio.eliminarNombreVocales();
         System.out.println(gimnasio);
 

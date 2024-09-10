@@ -130,29 +130,30 @@ public class Gimnasio {
     }
 
     //vocal
-    public int determinarVocal(){
+    private int determinarVocal(String nombre){
         int contador=0;
-        for(Miembro m: miembros){
-            String nombre=m.getNombre();
-            char[] vocales=nombre.toLowerCase().toCharArray();
-              for (char vocal: vocales){
-                if(vocal=='a' || vocal=='e' || vocal=='i' || vocal=='o' || vocal=='u'){
-                contador+=1;
+        char[] vocales=nombre.toLowerCase().toCharArray();
+        for (char vocal: vocales){
+             if(vocal=='a' || vocal=='e' || vocal=='i' || vocal=='o' || vocal=='u'){
+               contador+=1;
             }
-            }
-        }  
+        }
+         
         return contador;
+        
+
 
     }
 
     //eliminar por vocal
     public void eliminarNombreVocales(){
-        for (int i =0 ; i<miembros.size();i++){
-            if(determinarVocal()>=3){
-                miembros.remove(i);
+        for (Miembro m: miembros){
+            if(determinarVocal(m.getNombre())>=3){
+                miembros.remove(m);
             }
-            i--;
+
         }
+       
     }
 
 
